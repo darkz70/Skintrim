@@ -1,0 +1,33 @@
+import net.darkz70.utils.FigureStoneUtils
+
+plugins {
+	id "net.darkz70.figurestone-plugin-core" version "$figurestone_plugin_version"
+}
+
+figurestoneDependencies {
+	minecraft = stonecutter.current.project.substring(stonecutter.current.project.indexOf("-") + 1)
+	lombok = prop("base.lombok_version")
+
+	fabricApi = prop("build.fabric_api")
+	fabricLoader = prop("build.fabric_loader")
+
+	forge = prop("build.forge")
+
+	neoForge = prop("build.neoforge")
+	parchment = prop("build.parchment")
+
+	additional {
+		// TIP: Don't use modImplementation, use figurestoneImplementation and etc.
+		//override("figurestoneCompileOnly", "yacl")
+		//disable("yacl")
+	}
+}
+
+figurestoneResources {
+	//expandFiles = ["file pattern"]
+	customProperty("figurestonelib_version", FigureStoneUtils.substringBefore(prop("dep.figurestonelib"), "+"))
+}
+
+String prop(String key) {
+	return findProperty(key).toString()
+}

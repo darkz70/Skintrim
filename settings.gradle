@@ -1,0 +1,34 @@
+pluginManagement {
+	repositories {
+		maven {
+			name "Fabric"
+			url "https://maven.fabricmc.net/"
+		}
+		maven {
+			name "Kiku Snapshots"
+			url "https://maven.kikugie.dev/snapshots"
+		}
+		maven {
+			name "Kiku Releases"
+			url "https://maven.kikugie.dev/releases"
+		}
+		maven {
+			name "GitHubPackages"
+			url "https://maven.pkg.github.com/darkz70/FigureStonePlugin"
+			def ghUser = System.getenv("GITHUB_ACTOR") ?: providers.gradleProperty("gpr.user").getOrNull()
+			def ghToken = System.getenv("GITHUB_TOKEN") ?: providers.gradleProperty("gpr.key").getOrNull()
+			credentials {
+				username = ghUser
+				password = ghToken
+			}
+		}
+		mavenLocal()
+		mavenCentral()
+		gradlePluginPortal()
+	}
+}
+
+plugins {
+	id "dev.kikugie.stonecutter" version "0.9"
+	id "net.darkz70.figurestone-plugin-settings" version "$figurestone_plugin_version"
+}
