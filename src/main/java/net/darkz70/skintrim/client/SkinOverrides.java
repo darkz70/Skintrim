@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class SkinOverrides {
 
-	public static final class Override {
+	public static final class SkinOverride {
 		public @Nullable ClientAsset.Texture body;
 		public boolean bodySet;
 		public @Nullable ClientAsset.Texture cape;
@@ -42,18 +42,18 @@ public final class SkinOverrides {
 		}
 	}
 
-	private static final Override LOCAL = new Override();
-	private static final Map<UUID, Override> REMOTE = new ConcurrentHashMap<>();
+	private static final SkinOverride LOCAL = new SkinOverride();
+	private static final Map<UUID, SkinOverride> REMOTE = new ConcurrentHashMap<>();
 
 	private SkinOverrides() {
 	}
 
-	public static Override local() {
+	public static SkinOverride local() {
 		return LOCAL;
 	}
 
-	public static Override remote(UUID uuid) {
-		return REMOTE.computeIfAbsent(uuid, id -> new Override());
+	public static SkinOverride remote(UUID uuid) {
+		return REMOTE.computeIfAbsent(uuid, id -> new SkinOverride());
 	}
 
 	public static void clearRemote(UUID uuid) {
@@ -70,7 +70,7 @@ public final class SkinOverrides {
 		if (minecraft != null && minecraft.player != null && minecraft.player.getUUID().equals(uuid)) {
 			return LOCAL.isEmpty() ? null : LOCAL.apply(original);
 		}
-		Override remote = REMOTE.get(uuid);
+		SkinOverride remote = REMOTE.get(uuid);
 		if (remote == null || remote.isEmpty()) {
 			return null;
 		}

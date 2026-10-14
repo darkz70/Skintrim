@@ -21,8 +21,8 @@ public class Skintrim {
 	}
 
 	public static void onInitialize() {
-		PayloadTypeRegistry.playC2S().register(SkinSyncPayload.TYPE, SkinSyncPayload.CODEC);
-		PayloadTypeRegistry.playS2C().register(SkinBroadcastPayload.TYPE, SkinBroadcastPayload.CODEC);
+		PayloadTypeRegistry.serverboundPlay().register(SkinSyncPayload.TYPE, SkinSyncPayload.CODEC);
+		PayloadTypeRegistry.clientboundPlay().register(SkinBroadcastPayload.TYPE, SkinBroadcastPayload.CODEC);
 
 		SkintrimServer.init();
 

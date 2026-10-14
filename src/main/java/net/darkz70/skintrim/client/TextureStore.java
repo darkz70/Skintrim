@@ -88,7 +88,7 @@ public final class TextureStore {
 				SkinOverrides.clearRemote(uuid);
 				return;
 			}
-			SkinOverrides.Override override = SkinOverrides.remote(uuid);
+			SkinOverrides.SkinOverride override = SkinOverrides.remote(uuid);
 			try {
 				if (skinPng.length > 0) {
 					Identifier id = registerTexture("remote/" + uuid + "/skin", skinPng, Kind.SKIN);

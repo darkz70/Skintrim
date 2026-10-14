@@ -50,7 +50,7 @@ public final class SkintrimClient {
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (openGuiKey.consumeClick()) {
-				client.setScreen(new SkintrimScreen(client.screen));
+				client.setScreen(new SkintrimScreen(client.gui.screen()));
 			}
 		});
 

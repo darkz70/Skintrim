@@ -31,8 +31,8 @@ jobs:
           ./gradlew buildAndCollect+${{ matrix.platform }}+All -Pci_loader=${{ matrix.platform }} > build-output.log 2>&1
           code=$?
           if [ $code -ne 0 ]; then
-            echo "===== BUILD FAILED (exit $code), last log lines: ====="
-            tail -n 120 build-output.log | sed 's/%/%25/g; s/\r/%0D/g' | while IFS= read -r line; do echo "::error::$line"; done
+            echo "===== BUILD FAILED (exit $code), compile errors: ====="
+            grep -E ": error:|What went wrong|Execution failed|FAILED" build-output.log | sort -u | head -9 | sed 's/%/%25/g; s/\r/%0D/g' | while IFS= read -r line; do echo "::error::$line"; done
           fi
           exit $code
       - name: capture build artifacts
