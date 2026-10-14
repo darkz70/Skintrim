@@ -1,5 +1,7 @@
 # Skintrim
 
+![Skintrim logo](logo.png)
+
 **Skintrim** — Fabric-мод для Minecraft **26.2 / 26.3** (Java 25), который позволяет менять **скин и плащ прямо в игре**, не выходя в лаунчер и не перезаходя на сервер.
 
 Сборка — на [MossyPlugin](https://github.com/LopyMine/MossyPlugin) (LopyMine) + Stonecutter, мульти-версия `fabric-26.2` / `fabric-26.3` из одного исходника.
