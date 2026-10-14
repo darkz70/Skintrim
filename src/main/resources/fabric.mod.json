@@ -9,26 +9,25 @@
     ],
     "contact": {
         "homepage": "https://modrinth.com/mod/${mod_id}",
-        "issues": "https://github.com/${github_author}/${mod_id}"
+        "issues": "https://github.com/${github_mod_author}/${mod_id}"
     },
     "license": "${mod_license}",
     "icon": "icon/icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-	        "net.darkz70.figurestone.entrypoint.CommonEntrypoint"
+	        "net.darkz70.skintrim.entrypoint.CommonEntrypoint"
         ],
         "client": [
-	        "net.darkz70.figurestone.entrypoint.ClientEntrypoint"
+	        "net.darkz70.skintrim.entrypoint.ClientEntrypoint"
         ],
         "modmenu": [
-	        "net.darkz70.figurestone.modmenu.ModMenuIntegration"
+	        "net.darkz70.skintrim.modmenu.ModMenuIntegration"
         ]
     },
     "depends": {
-	    "figurestonelib": ">=${figurestonelib}",
         "fabricloader": ">=${fabric_loader}",
-        "minecraft": ">=${minecraft}",
+        "minecraft": "*",
         "java": ">=${java}",
         "${fabric_api_id}": "*"
     },

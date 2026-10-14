@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "net.darkz70.skintrim.mixin",
+	"refmap": "${mod_id}.refmap.json",
+	"compatibilityLevel": "JAVA_${java}",
+	"mixins": [
+	],
+	"client": [
+		"AbstractClientPlayerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

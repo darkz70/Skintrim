@@ -1,10 +1,8 @@
-import net.darkz70.utils.FigureStoneUtils
-
 plugins {
-	id "net.darkz70.figurestone-plugin-core" version "$figurestone_plugin_version"
+	id "net.lopymine.mossy-plugin-core" version "$mossy_plugin_version"
 }
 
-figurestoneDependencies {
+mossyDependencies {
 	minecraft = stonecutter.current.project.substring(stonecutter.current.project.indexOf("-") + 1)
 	lombok = prop("base.lombok_version")
 
@@ -17,15 +15,17 @@ figurestoneDependencies {
 	parchment = prop("build.parchment")
 
 	additional {
-		// TIP: Don't use modImplementation, use figurestoneImplementation and etc.
-		//override("figurestoneCompileOnly", "yacl")
+		// TIP: Don't use modImplementation, use mossyImplementation and etc.
+		override("mossyCompileOnly", "modmenu")
 		//disable("yacl")
 	}
 }
 
-figurestoneResources {
-	//expandFiles = ["file pattern"]
-	customProperty("figurestonelib_version", FigureStoneUtils.substringBefore(prop("dep.figurestonelib"), "+"))
+stonecutter {
+	replacements.string(current.parsed >= "26.1") {
+		replace("net.minecraft.client.gui.GuiGraphics", "net.minecraft.client.gui.GuiGraphicsExtractor")
+		replace("GuiGraphics", "GuiGraphicsExtractor")
+	}
 }
 
 String prop(String key) {

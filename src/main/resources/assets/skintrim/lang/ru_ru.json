@@ -1,0 +1,33 @@
+{
+	"key.category.skintrim.general": "Skintrim",
+	"key.skintrim.open_gui": "Открыть Skintrim",
+
+	"skintrim.gui.title": "Skintrim — скин и плащ",
+	"skintrim.gui.hint": "Путь к файлу, ссылка или ник игрока. Можно просто перетащить PNG в окно игры.",
+	"skintrim.gui.skin": "Скин",
+	"skintrim.gui.cape": "Плащ",
+	"skintrim.gui.input_hint": "skin.png / https://... / ник игрока",
+	"skintrim.gui.apply_skin": "Применить скин",
+	"skintrim.gui.reset_skin": "Сбросить скин",
+	"skintrim.gui.apply_cape": "Применить плащ",
+	"skintrim.gui.reset_cape": "Сбросить плащ",
+	"skintrim.gui.model": "Модель: %s",
+	"skintrim.model.classic": "Классика",
+	"skintrim.model.slim": "Тонкая (Slim)",
+	"skintrim.gui.sync": "Синхронизация: %s",
+	"skintrim.gui.mojang_upload": "Загрузить в Mojang",
+	"skintrim.gui.mojang_reset": "Сбросить скин Mojang",
+	"skintrim.gui.open_folder": "Папка скинов",
+	"skintrim.gui.preview": "Предпросмотр",
+	"skintrim.gui.no_skin": "Нет скина",
+
+	"skintrim.status.loading": "Загрузка...",
+	"skintrim.status.skin_applied": "Скин применён! Вам виден сразу, другим игрокам со Skintrim на этом сервере — через синхронизацию, а всем вообще — после загрузки в Mojang.",
+	"skintrim.status.cape_applied": "Плащ применён! Кастомные плащи видны вам и другим игрокам со Skintrim на этом сервере.",
+	"skintrim.status.skin_reset": "Скин сброшен на ваш скин из Mojang.",
+	"skintrim.status.cape_reset": "Плащ убран.",
+	"skintrim.status.mojang_ok": "Скин загружен в Mojang! Его увидят все (может занять пару минут / нужен перезаход).",
+	"skintrim.status.mojang_reset_ok": "Скин Mojang сброшен.",
+	"skintrim.status.mojang_error": "Запрос к Mojang не удался: %s. Загрузка работает только с лицензионным аккаунтом в онлайн-режиме.",
+	"skintrim.status.error": "Ошибка: %s"
+}

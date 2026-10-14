@@ -1,0 +1,33 @@
+{
+	"key.category.skintrim.general": "Skintrim",
+	"key.skintrim.open_gui": "Open Skintrim",
+
+	"skintrim.gui.title": "Skintrim — Skin & Cape",
+	"skintrim.gui.hint": "File path, URL or username. You can also drag & drop a PNG into the window.",
+	"skintrim.gui.skin": "Skin",
+	"skintrim.gui.cape": "Cape",
+	"skintrim.gui.input_hint": "skin.png / https://... / username",
+	"skintrim.gui.apply_skin": "Apply Skin",
+	"skintrim.gui.reset_skin": "Reset Skin",
+	"skintrim.gui.apply_cape": "Apply Cape",
+	"skintrim.gui.reset_cape": "Reset Cape",
+	"skintrim.gui.model": "Model: %s",
+	"skintrim.model.classic": "Classic",
+	"skintrim.model.slim": "Slim",
+	"skintrim.gui.sync": "Server Sync: %s",
+	"skintrim.gui.mojang_upload": "Upload to Mojang",
+	"skintrim.gui.mojang_reset": "Reset Mojang Skin",
+	"skintrim.gui.open_folder": "Skins Folder",
+	"skintrim.gui.preview": "Preview",
+	"skintrim.gui.no_skin": "No skin",
+
+	"skintrim.status.loading": "Loading...",
+	"skintrim.status.skin_applied": "Skin applied! Visible to you instantly, to other Skintrim users on this server via sync, and to everyone after a Mojang upload.",
+	"skintrim.status.cape_applied": "Cape applied! Custom capes are visible to you and to other Skintrim users on this server.",
+	"skintrim.status.skin_reset": "Skin reset to your Mojang skin.",
+	"skintrim.status.cape_reset": "Cape removed.",
+	"skintrim.status.mojang_ok": "Skin uploaded to Mojang! Everyone will see it (may take a few minutes / a rejoin).",
+	"skintrim.status.mojang_reset_ok": "Mojang skin reset.",
+	"skintrim.status.mojang_error": "Mojang request failed: %s. Uploading only works with a licensed account in online mode.",
+	"skintrim.status.error": "Error: %s"
+}

@@ -1,5 +1,12 @@
 name: Build
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
 
 jobs:
   build:
@@ -9,20 +16,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [fabric, neoforge, forge]
+        platform: [fabric]
     steps:
       - uses: actions/checkout@v4
       - uses: gradle/wrapper-validation-action@v2
       - uses: actions/setup-java@v4
         with:
-          java-version: 21
-          distribution: microsoft
+          java-version: 25
+          distribution: temurin
       - run: chmod +x ./gradlew
       - name: Build ${{ matrix.platform }}
         run: ./gradlew buildAndCollect+${{ matrix.platform }}+All -Pci_loader=${{ matrix.platform }}
-        env:
-          GITHUB_ACTOR: darkz70
-          GITHUB_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
       - name: capture build artifacts
         uses: actions/upload-artifact@v4
         with:
