@@ -302,7 +302,7 @@ public class SkintrimScreen extends Screen {
 	public void onClose() {
 		SkintrimConfig.getInstance().save();
 		if (this.minecraft != null) {
-			this.minecraft.setScreen(parent);
+			this.minecraft.gui.setScreen(parent);
 		}
 	}
 }

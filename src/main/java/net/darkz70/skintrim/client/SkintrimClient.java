@@ -1,8 +1,6 @@
 package net.darkz70.skintrim.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import org.lwjgl.glfw.GLFW;
-
 import net.darkz70.skintrim.Skintrim;
 import net.darkz70.skintrim.client.gui.SkintrimScreen;
 import net.darkz70.skintrim.config.SkintrimConfig;
@@ -44,13 +42,13 @@ public final class SkintrimClient {
 		openGuiKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
 				"key.skintrim.open_gui",
 				InputConstants.Type.KEYSYM,
-				GLFW.GLFW_KEY_K,
+				InputConstants.KEY_K,
 				KeyMapping.Category.register(Skintrim.id("general"))
 		));
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (openGuiKey.consumeClick()) {
-				client.setScreen(new SkintrimScreen(client.gui.screen()));
+				client.gui.setScreen(new SkintrimScreen(client.gui.screen()));
 			}
 		});
 

@@ -4,7 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.ClientAsset;
 import net.minecraft.world.entity.player.PlayerModelType;
 import net.minecraft.world.entity.player.PlayerSkin;
-import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
 import java.util.UUID;
@@ -19,9 +18,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class SkinOverrides {
 
 	public static final class SkinOverride {
-		public @Nullable ClientAsset.Texture body;
+		public ClientAsset.Texture body;
 		public boolean bodySet;
-		public @Nullable ClientAsset.Texture cape;
+		public ClientAsset.Texture cape;
 		public boolean capeSet;
 		public PlayerModelType model = PlayerModelType.WIDE;
 
@@ -64,7 +63,6 @@ public final class SkinOverrides {
 		REMOTE.clear();
 	}
 
-	@Nullable
 	public static PlayerSkin patch(UUID uuid, PlayerSkin original) {
 		Minecraft minecraft = Minecraft.getInstance();
 		if (minecraft != null && minecraft.player != null && minecraft.player.getUUID().equals(uuid)) {
