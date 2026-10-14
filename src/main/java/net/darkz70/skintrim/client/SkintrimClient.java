@@ -1,6 +1,5 @@
 package net.darkz70.skintrim.client;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import net.darkz70.skintrim.Skintrim;
 import net.darkz70.skintrim.client.gui.SkintrimScreen;
 import net.darkz70.skintrim.config.SkintrimConfig;
@@ -39,10 +38,10 @@ public final class SkintrimClient {
 			});
 		}
 
+		// 75 = GLFW_KEY_K; literal used because InputConstants changed in 26.3
 		openGuiKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
 				"key.skintrim.open_gui",
-				InputConstants.Type.KEYSYM,
-				InputConstants.KEY_K,
+				75,
 				KeyMapping.Category.register(Skintrim.id("general"))
 		));
 

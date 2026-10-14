@@ -10,7 +10,6 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
 import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
@@ -194,7 +193,14 @@ public class SkintrimScreen extends Screen {
 		try {
 			Path dir = SkintrimConfig.getInstance().skinsDir();
 			java.nio.file.Files.createDirectories(dir);
-			Util.getPlatform().openPath(dir);
+			String os = System.getProperty("os.name", "").toLowerCase();
+			if (os.contains("win")) {
+				new ProcessBuilder("explorer", dir.toString()).start();
+			} else if (os.contains("mac")) {
+				new ProcessBuilder("open", dir.toString()).start();
+			} else {
+				new ProcessBuilder("xdg-open", dir.toString()).start();
+			}
 		} catch (Exception e) {
 			setStatus(Component.translatable("skintrim.status.error", String.valueOf(e.getMessage())), 0xFF5555);
 		}
