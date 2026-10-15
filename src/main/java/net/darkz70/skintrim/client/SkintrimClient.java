@@ -89,6 +89,28 @@ public final class SkintrimClient {
 		ClientPlayNetworking.send(new SkinSyncPayload(TextureStore.localSkinBytes, TextureStore.localCapeBytes, config.skinModel));
 	}
 
+	/** Applies the configured cape mode (custom / mojang / hidden). Custom capes never require a Mojang cape. */
+	public static void applyCapeMode() {
+		SkintrimConfig config = SkintrimConfig.getInstance();
+		SkinOverrides.local().hideCape = "hidden".equals(config.capeMode);
+		if ("custom".equals(config.capeMode)) {
+			if (!config.capeInput.isBlank()) {
+				TextureStore.applyLocalCape(config.capeInput, (ok, msg) -> {
+					if (ok) {
+						sendSyncToServer();
+					}
+				});
+			}
+		} else {
+			TextureStore.clearLocalCape();
+			if (TextureStore.localSkinBytes.length > 0) {
+				sendSyncToServer();
+			} else {
+				sendClearToServer();
+			}
+		}
+	}
+
 	public static void sendClearToServer() {
 		if (!ClientPlayNetworking.canSend(SkinSyncPayload.TYPE)) {
 			return;
