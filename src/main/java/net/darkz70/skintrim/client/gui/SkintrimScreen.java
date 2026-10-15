@@ -78,7 +78,12 @@ public class SkintrimScreen extends Screen {
 				.bounds(left, y, 128, 20).build());
 		this.addRenderableWidget(Button.builder(Component.translatable("skintrim.gui.reset_cape"), b -> resetCape())
 				.bounds(left + 132, y, 128, 20).build());
-		y += 32;
+		y += 24;
+
+		this.capeModeButton = Button.builder(capeModeMessage(), b -> toggleCapeMode())
+				.bounds(left, y, 260, 20).build();
+		this.addRenderableWidget(this.capeModeButton);
+		y += 28;
 
 		this.addRenderableWidget(Button.builder(Component.translatable("skintrim.gui.mojang_upload"), b -> uploadToMojang())
 				.bounds(left, y, 128, 20).build());
@@ -137,10 +142,32 @@ public class SkintrimScreen extends Screen {
 		setStatus(Component.translatable("skintrim.status.skin_reset"), 0xAAAAAA);
 	}
 
+	private void toggleCapeMode() {
+		SkintrimConfig config = SkintrimConfig.getInstance();
+		config.capeInput = capeBox.getValue().trim();
+		config.capeMode = switch (config.capeMode) {
+			case "custom" -> "mojang";
+			case "mojang" -> "hidden";
+			default -> "custom";
+		};
+		config.save();
+		capeModeButton.setMessage(capeModeMessage());
+		SkintrimClient.applyCapeMode();
+		setStatus(Component.translatable("skintrim.status.cape_mode",
+				Component.translatable("skintrim.cape_mode." + config.capeMode)), 0xAAAAAA);
+	}
+
+	private Component capeModeMessage() {
+		return Component.translatable("skintrim.gui.cape_mode",
+				Component.translatable("skintrim.cape_mode." + SkintrimConfig.getInstance().capeMode));
+	}
+
 	private void applyCape() {
 		SkintrimConfig config = SkintrimConfig.getInstance();
 		config.capeInput = capeBox.getValue().trim();
+		config.capeMode = "custom";
 		config.save();
+		capeModeButton.setMessage(capeModeMessage());
 		setStatus(Component.translatable("skintrim.status.loading"), 0xFFFF55);
 		TextureStore.applyLocalCape(config.capeInput, (ok, msg) -> {
 			if (ok) {
