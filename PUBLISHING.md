@@ -1,31 +1,5 @@
-# Skintrim — Store Page Text
-
-Ready-to-paste text for Modrinth / CurseForge. Keep the summary under your
-platform's character limit; the long description below is Markdown.
-
----
-
-## Summary (short, for listings/search)
-
-Change your skin and cape right in game — from a file, a URL or a username. No Mojang cape needed. Fabric 26.2 / 26.3.
-
-## Tagline options
-
-- Your skin. Your cape. Changed in game, seen by everyone.
-- The in-game wardrobe for Minecraft 26.2 / 26.3.
-- Swap skins like outfits — history included.
-
-## Categories / tags
-
-`client`, `utility`, `cosmetic`, `fabric`, `skin`, `cape`, `wardrobe`
-
----
-
-## Long description (paste into the project body)
 
 # Skintrim
-
-![Skintrim logo](logo.png)
 
 **Change your skin and cape without ever leaving the game.**
 
