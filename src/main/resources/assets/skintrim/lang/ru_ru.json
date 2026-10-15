@@ -19,7 +19,7 @@
 	"skintrim.cape_mode.custom": "Свой (Mojang не нужен)",
 	"skintrim.cape_mode.mojang": "Mojang (официальный)",
 	"skintrim.cape_mode.hidden": "Скрыт",
-	"skintrim.status.cape_mode": "Источник плаща: %s. Для своего плаща официальный плащ Mojang не нужен.",
+	"skintrim.status.cape_mode": "Источник плаща: %s. Для своего плаща не нужны ни официальный плащ Mojang, ни лицензия — всё работает офлайн.",
 	"skintrim.gui.mojang_upload": "Загрузить в Mojang",
 	"skintrim.gui.mojang_reset": "Сбросить скин Mojang",
 	"skintrim.gui.open_folder": "Папка скинов",

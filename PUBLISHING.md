@@ -60,7 +60,9 @@ Uploads use your current session token to talk to Mojang's official API.
 The token is never logged, stored, or sent anywhere else.
 
 **Offline / cracked launchers?**
-Local skins, custom capes, history and server sync all work offline.
+Local skins, custom capes, history and server sync all work offline —
+no licensed account needed. Fetching a skin/cape by username uses public,
+unauthenticated lookups, and sync also works on offline-mode servers.
 Only the Mojang upload needs a licensed account in online mode.
 
 ---

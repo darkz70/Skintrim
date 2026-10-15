@@ -39,6 +39,7 @@ Custom capes are **fully independent of Mojang**:
 - You do **not** need to own an official Mojang cape, and nothing is uploaded to Mojang for capes (Mojang does not accept custom cape uploads at all).
 - Cape source is switchable in the editor: **Custom** (this mod), **Mojang** (your official cape), or **Hidden** (no cape).
 - A custom cape works in singleplayer and offline mode, and is also sent through server sync so other Skintrim users can see it.
+- **No licensed account required**: custom skins and capes, history, by-username lookup (public, unauthenticated endpoints) and server sync all work fully offline, including on offline-mode servers. The only feature that needs a licensed account in online mode is the optional Mojang skin upload below.
 - Your custom cape texture is also used for the elytra.
 
 ## Who can see your new look?

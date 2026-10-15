@@ -219,6 +219,46 @@ public final class TextureStore {
 	}
 
 	private static Fetched fetchByUsername(String username, Kind kind) throws Exception {
+		try {
+			return fetchByUsernameMojang(username, kind);
+		} catch (Exception mojangError) {
+			// Fallback: unauthenticated public lookup. Needs no account, token or
+			// licensed copy of the game, so username skins/capes also work in
+			// offline mode and when Mojang's own API is unreachable.
+			Skintrim.LOGGER.debug("Mojang username lookup failed for {}, trying fallback", username, mojangError);
+			return fetchByUsernameFallback(username, kind);
+		}
+	}
+
+	private static Fetched fetchByUsernameFallback(String username, Kind kind) throws Exception {
+		String json = httpGet("https://api.ashcon.app/mojang/v2/user/" + URLEncoder.encode(username, StandardCharsets.UTF_8));
+		JsonObject root = JsonParser.parseString(json).getAsJsonObject();
+		if (!root.has("textures") || !root.get("textures").isJsonObject()) {
+			throw new IllegalArgumentException("Player not found: " + username);
+		}
+		JsonObject textures = root.getAsJsonObject("textures");
+
+		if (kind == Kind.SKIN) {
+			if (!textures.has("skin") || !textures.get("skin").isJsonObject()) {
+				throw new IllegalArgumentException(username + " has no custom skin");
+			}
+			JsonObject skin = textures.getAsJsonObject("skin");
+			String model = null;
+			if (skin.has("slim") && skin.get("slim").isJsonPrimitive()) {
+				model = skin.get("slim").getAsBoolean() ? "slim" : "classic";
+			} else if (skin.has("model") && skin.get("model").isJsonPrimitive()) {
+				model = "slim".equals(skin.get("model").getAsString()) ? "slim" : "classic";
+			}
+			return new Fetched(download(skin.get("url").getAsString()), model);
+		}
+
+		if (!textures.has("cape") || !textures.get("cape").isJsonObject()) {
+			throw new IllegalArgumentException(username + " has no cape");
+		}
+		return new Fetched(download(textures.getAsJsonObject("cape").get("url").getAsString()), null);
+	}
+
+	private static Fetched fetchByUsernameMojang(String username, Kind kind) throws Exception {
 		String lookup = httpGet("https://api.minecraftservices.com/minecraft/profile/lookup/name/"
 				+ URLEncoder.encode(username, StandardCharsets.UTF_8));
 		JsonObject profile = JsonParser.parseString(lookup).getAsJsonObject();

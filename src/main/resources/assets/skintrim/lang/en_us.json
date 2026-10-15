@@ -19,7 +19,7 @@
 	"skintrim.cape_mode.custom": "Custom (no Mojang needed)",
 	"skintrim.cape_mode.mojang": "Mojang (official)",
 	"skintrim.cape_mode.hidden": "Hidden",
-	"skintrim.status.cape_mode": "Cape source: %s. Custom capes never require an official Mojang cape.",
+	"skintrim.status.cape_mode": "Cape source: %s. Custom capes never require an official Mojang cape or a licensed account — they fully work offline.",
 	"skintrim.gui.mojang_upload": "Upload to Mojang",
 	"skintrim.gui.mojang_reset": "Reset Mojang Skin",
 	"skintrim.gui.open_folder": "Skins Folder",
