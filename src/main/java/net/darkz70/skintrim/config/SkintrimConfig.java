@@ -30,6 +30,8 @@ public class SkintrimConfig {
 	public String skinModel = "classic";
 	/** Raw cape input: PNG file path, URL or username. Empty = no custom cape. */
 	public String capeInput = "";
+	/** Cape source, independent of Mojang: "custom" (this mod), "mojang" (official cape) or "hidden" (no cape). */
+	public String capeMode = "custom";
 	/** Send the skin/cape to Skintrim servers so other mod users see it. */
 	public boolean syncEnabled = true;
 	/** Previously applied skins, most recent first. */

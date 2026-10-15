@@ -152,6 +152,7 @@ public final class TextureStore {
 							localCapeBytes = result.bytes();
 							SkinOverrides.local().cape = SkinOverrides.assetOf(id);
 							SkinOverrides.local().capeSet = true;
+							SkinOverrides.local().hideCape = false;
 							SkintrimConfig.getInstance().recordCapeHistory(trimmed, cached);
 						}
 						callback.accept(true, "ok");

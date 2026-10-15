@@ -130,6 +130,7 @@ public class SkintrimHistoryScreen extends Screen {
 		setStatus(Component.translatable("skintrim.status.loading"), 0xFFFF55);
 		if (capes) {
 			config.capeInput = source;
+			config.capeMode = "custom";
 			config.save();
 			TextureStore.applyLocalCape(source, (ok, msg) -> {
 				if (ok) {

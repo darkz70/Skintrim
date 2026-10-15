@@ -2,59 +2,68 @@
 
 ![Skintrim logo](logo.png)
 
-**Skintrim** — Fabric-мод для Minecraft **26.2 / 26.3** (Java 25), который позволяет менять **скин и плащ прямо в игре**, не выходя в лаунчер и не перезаходя на сервер.
+**Skintrim** is a Fabric mod for Minecraft **26.2 / 26.3** (Java 25) that lets you change your **skin and cape right in game** — no launcher restart, no rejoining the server.
 
-Сборка — на [MossyPlugin](https://github.com/LopyMine/MossyPlugin) (LopyMine) + Stonecutter, мульти-версия `fabric-26.2` / `fabric-26.3` из одного исходника.
+Built with [MossyPlugin](https://github.com/LopyMine/MossyPlugin) (by LopyMine) + Stonecutter, targeting `fabric-26.2` and `fabric-26.3` from a single source tree.
 
-## Как открыть
+## Opening the editor
 
-- Клавиша **K** (переназначается в настройках управления, категория «Skintrim»)
-- Или через **ModMenu** → Skintrim
+- Press **K** (rebindable in Controls, category "Skintrim")
+- Or use **ModMenu** → Skintrim
 
-## Возможности
+## Features
 
-В каждое поле (скин / плащ) можно ввести:
+Each field (skin / cape) accepts:
 
-| Ввод | Что произойдёт |
+| Input | What happens |
 |---|---|
-| Путь к PNG (`C:\skins\my.png`, `my.png` из `config/skintrim/skins/`) | Скин/плащ загрузится с диска |
-| Ссылка `https://...png` | Текстура скачается по URL |
-| Ник игрока (`Notch`) | Скин (и плащ, если есть) подтянется из профиля Mojang этого игрока |
-| Перетаскивание PNG в окно игры | Файл применится сам; если в имени есть `cape` — применится как плащ |
+| Path to a PNG (`C:\skins\my.png`, or `my.png` from `config/skintrim/skins/`) | Loads the texture from disk |
+| An `https://...png` URL | Downloads the texture |
+| A Minecraft username (`Notch`) | Pulls the skin (and cape, if any) from that player's Mojang profile |
+| Drag & drop a PNG onto the game window | Applies it automatically; files with `cape` in the name apply as a cape |
 
-Ещё в окне:
+More in the editor window:
 
-- **Модель**: Классика / Slim — применяется к своему скину.
-- **Предпросмотр** скина и плаща слева.
-- **История** (кнопка в главном окне): последние 16 скинов и 16 плащей с датой и моделью. Клик по записи надевает её обратно — записи хранят кэш-копию PNG, поэтому работают, даже если исходный файл или ссылка уже недоступны. Историю можно очистить.
-- **Синхронизация** (вкл/выкл) — см. ниже.
-- **Папка скинов** — открывает `config/skintrim/skins/`, куда удобно складывать PNG.
+- **Model**: Classic / Slim for your skin.
+- **Live 2D preview** of the skin and cape.
+- **History**: the last 16 skins and 16 capes you applied, with model and date. Click any entry to wear it again. Entries keep a cached PNG copy, so they keep working even if the original file or URL is gone. History can be cleared per tab.
+- **Server Sync** toggle (see below).
+- **Skins Folder** button opens `config/skintrim/skins/`, a handy place to drop PNGs.
 
-Выбор сохраняется в `config/skintrim.json` и восстанавливается при следующем запуске.
+Your choices are saved to `config/skintrim.json` and restored on the next launch.
 
-## Кто видит новый скин
+## Capes without Mojang
 
-Честно про три уровня видимости:
+Custom capes are **fully independent of Mojang**:
 
-1. **Вы — сразу.** Локальный оверрай работает в одиночной игре и на любом сервере, ничего дополнительно не нужно.
-2. **Другие игроки со Skintrim на сервере, где тоже стоит Skintrim** — через синхронизацию: клиент отправляет PNG скина/плаща на сервер (канал `skintrim:skin_sync`), сервер рассылает всем (`skintrim:skin_broadcast`). Тот же jar ставится и на выделенный сервер — клиентский код там не загружается. Плащи видны именно так, кастомный плащ в Mojang загрузить нельзя.
-3. **Вообще все, включая ванильных клиентов** — кнопка **«Загрузить в Mojang»**: скин заливается в ваш официальный профиль через `api.minecraftservices.com` (нужен лицензионный аккаунт и онлайн-режим). Плащи Mojang так не ставит — только скины, и обновление у других игроков может занять пару минут / перезаход.
+- You do **not** need to own an official Mojang cape, and nothing is uploaded to Mojang for capes (Mojang does not accept custom cape uploads at all).
+- Cape source is switchable in the editor: **Custom** (this mod), **Mojang** (your official cape), or **Hidden** (no cape).
+- A custom cape works in singleplayer and offline mode, and is also sent through server sync so other Skintrim users can see it.
+- Your custom cape texture is also used for the elytra.
 
-## Требования
+## Who can see your new look?
 
-- Minecraft 26.2 или 26.3, Fabric Loader ≥ 0.19.3, Fabric API, Java 25
-- ModMenu — опционально (кнопка настроек)
+Three levels of visibility, honestly:
 
-## Сборка
+1. **You — instantly.** The local override works in singleplayer and on any server, nothing else required.
+2. **Other Skintrim users on a server that also runs Skintrim** — via sync: your client sends the skin/cape PNGs to the server (`skintrim:skin_sync`), the server broadcasts them to everyone (`skintrim:skin_broadcast`). The same jar works on a dedicated server; no client code is loaded there. Custom capes are visible this way.
+3. **Everyone, including vanilla clients** — the **Upload to Mojang** button sends the skin to your official profile via `api.minecraftservices.com` (requires a licensed account in online mode). Note: this only works for skins — Mojang cannot accept custom capes — and propagation to other players may take a few minutes or a rejoin.
+
+## Requirements
+
+- Minecraft 26.2 or 26.3, Fabric Loader ≥ 0.19.3, Fabric API, Java 25
+- ModMenu is optional (adds a settings button)
+
+## Building
 
 ```bash
 ./gradlew buildAndCollect+fabric+All -Pci_loader=fabric
 ```
 
-Готовые jar лежат в `libs/`. Активная версия для запуска из IDE — `versions/active.txt` (`fabric-26.3`), переключается Stonecutter'ом.
+Built jars land in `libs/`. The active version for running from the IDE is set in `versions/active.txt` (`fabric-26.3`) and switched via Stonecutter.
 
-> Перед публикацией на Modrinth/CurseForge замените `modrinth_id` / `curseforge_id` в `gradle.properties` на реальные ID проекта.
+> Before publishing on Modrinth/CurseForge, replace `modrinth_id` / `curseforge_id` in `gradle.properties` with the real Skintrim project IDs. A ready-made store page text lives in [PUBLISHING.md](PUBLISHING.md).
 
-## Лицензия
+## License
 
-CC BY-ND 4.0 — см. `LICENSE`.
+CC BY-ND 4.0 — see `LICENSE`.

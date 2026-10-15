@@ -22,10 +22,12 @@ public final class SkinOverrides {
 		public boolean bodySet;
 		public ClientAsset.Texture cape;
 		public boolean capeSet;
+		/** Hide any cape (including an official Mojang one). Works without a Mojang cape. */
+		public boolean hideCape;
 		public PlayerModelType model = PlayerModelType.WIDE;
 
 		public boolean isEmpty() {
-			return !bodySet && !capeSet;
+			return !bodySet && !capeSet && !hideCape;
 		}
 
 		PlayerSkin apply(PlayerSkin original) {
@@ -34,8 +36,8 @@ public final class SkinOverrides {
 			}
 			return PlayerSkin.insecure(
 					bodySet && body != null ? body : original.body(),
-					capeSet ? cape : original.cape(),
-					capeSet ? cape : original.elytra(),
+					hideCape ? null : (capeSet ? cape : original.cape()),
+					hideCape ? null : (capeSet ? cape : original.elytra()),
 					bodySet ? model : original.model()
 			);
 		}

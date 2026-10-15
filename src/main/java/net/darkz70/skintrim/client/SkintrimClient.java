@@ -30,7 +30,9 @@ public final class SkintrimClient {
 				}
 			});
 		}
-		if (!config.capeInput.isBlank()) {
+		// Capes are independent of Mojang: custom capes need no official cape.
+		SkinOverrides.local().hideCape = "hidden".equals(config.capeMode);
+		if ("custom".equals(config.capeMode) && !config.capeInput.isBlank()) {
 			TextureStore.applyLocalCape(config.capeInput, (ok, msg) -> {
 				if (ok) {
 					sendSyncToServer();

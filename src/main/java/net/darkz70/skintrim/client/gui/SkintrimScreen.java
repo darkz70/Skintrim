@@ -28,6 +28,7 @@ public class SkintrimScreen extends Screen {
 	private EditBox capeBox;
 	private Button modelButton;
 	private Button syncButton;
+	private Button capeModeButton;
 
 	private Component status = Component.empty();
 	private int statusColor = 0xFFFFFF;
@@ -154,7 +155,9 @@ public class SkintrimScreen extends Screen {
 	private void resetCape() {
 		SkintrimConfig config = SkintrimConfig.getInstance();
 		config.capeInput = "";
+		config.capeMode = "mojang";
 		config.save();
+		capeModeButton.setMessage(capeModeMessage());
 		capeBox.setValue("");
 		TextureStore.clearLocalCape();
 		if (TextureStore.localSkinBytes.length == 0) {
