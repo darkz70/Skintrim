@@ -18,6 +18,15 @@
 	"skintrim.gui.mojang_upload": "Upload to Mojang",
 	"skintrim.gui.mojang_reset": "Reset Mojang Skin",
 	"skintrim.gui.open_folder": "Skins Folder",
+	"skintrim.gui.history": "History",
+
+	"skintrim.history.title": "Skin & Cape History",
+	"skintrim.history.tab": "Showing: %s",
+	"skintrim.history.skins": "Skins",
+	"skintrim.history.capes": "Capes",
+	"skintrim.history.empty": "Nothing here yet. Apply a skin or a cape and it will show up here.",
+	"skintrim.history.clear": "Clear History",
+	"skintrim.history.cleared": "History cleared.",
 	"skintrim.gui.preview": "Preview",
 	"skintrim.gui.no_skin": "No skin",
 

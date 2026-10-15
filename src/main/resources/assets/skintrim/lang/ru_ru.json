@@ -18,6 +18,15 @@
 	"skintrim.gui.mojang_upload": "Загрузить в Mojang",
 	"skintrim.gui.mojang_reset": "Сбросить скин Mojang",
 	"skintrim.gui.open_folder": "Папка скинов",
+	"skintrim.gui.history": "История",
+
+	"skintrim.history.title": "История скинов и плащей",
+	"skintrim.history.tab": "Показано: %s",
+	"skintrim.history.skins": "Скины",
+	"skintrim.history.capes": "Плащи",
+	"skintrim.history.empty": "Пока пусто. Примените скин или плащ — и он появится здесь.",
+	"skintrim.history.clear": "Очистить историю",
+	"skintrim.history.cleared": "История очищена.",
 	"skintrim.gui.preview": "Предпросмотр",
 	"skintrim.gui.no_skin": "Нет скина",
 

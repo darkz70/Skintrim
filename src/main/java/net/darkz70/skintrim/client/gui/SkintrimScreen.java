@@ -85,10 +85,24 @@ public class SkintrimScreen extends Screen {
 				.bounds(left + 132, y, 128, 20).build());
 		y += 24;
 
-		this.addRenderableWidget(Button.builder(Component.translatable("skintrim.gui.open_folder"), b -> openSkinsFolder())
+		this.addRenderableWidget(Button.builder(Component.translatable("skintrim.gui.history"), b -> openHistory())
 				.bounds(left, y, 128, 20).build());
-		this.addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> onClose())
+		this.addRenderableWidget(Button.builder(Component.translatable("skintrim.gui.open_folder"), b -> openSkinsFolder())
 				.bounds(left + 132, y, 128, 20).build());
+		y += 24;
+
+		this.addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> onClose())
+				.bounds(left, y, 260, 20).build());
+	}
+
+	private void openHistory() {
+		SkintrimConfig config = SkintrimConfig.getInstance();
+		config.skinInput = skinBox.getValue().trim();
+		config.capeInput = capeBox.getValue().trim();
+		config.save();
+		if (this.minecraft != null) {
+			this.minecraft.gui.setScreen(new SkintrimHistoryScreen(this));
+		}
 	}
 
 	// ------------------------------------------------------------ actions

@@ -30,6 +30,85 @@ public class SkintrimConfig {
 	public String capeInput = "";
 	/** Send the skin/cape to Skintrim servers so other mod users see it. */
 	public boolean syncEnabled = true;
+	/** Previously applied skins, most recent first. */
+	public List<HistoryEntry> skinHistory = new ArrayList<>();
+	/** Previously applied capes, most recent first. */
+	public List<HistoryEntry> capeHistory = new ArrayList<>();
+
+	public static final int MAX_HISTORY = 16;
+
+	/** One remembered skin/cape. {@code file} points to the cached PNG copy, so the entry still works if the original source disappears. */
+	public static class HistoryEntry {
+		public String input = "";
+		public String model = "classic";
+		public String file = "";
+		public long time = 0;
+
+		public HistoryEntry() {
+		}
+
+		public HistoryEntry(String input, String model, String file, long time) {
+			this.input = input;
+			this.model = model;
+			this.file = file;
+			this.time = time;
+		}
+	}
+
+	public void recordSkinHistory(String input, String model, Path file) {
+		if (skinHistory == null) {
+			skinHistory = new ArrayList<>();
+		}
+		record(skinHistory, input, model, file);
+		save();
+	}
+
+	public void recordCapeHistory(String input, Path file) {
+		if (capeHistory == null) {
+			capeHistory = new ArrayList<>();
+		}
+		record(capeHistory, input, "classic", file);
+		save();
+	}
+
+	private static void record(List<HistoryEntry> list, String input, String model, Path file) {
+		String fileStr = file == null ? "" : file.toString();
+		HistoryEntry existing = null;
+		for (HistoryEntry entry : list) {
+			if (entry.input.equals(input) || (!fileStr.isEmpty() && fileStr.equals(entry.file))) {
+				existing = entry;
+				break;
+			}
+		}
+		if (existing == null) {
+			existing = new HistoryEntry(input, model, fileStr, 0);
+		} else {
+			list.remove(existing);
+			// Keep the original label/model: re-applying from history passes the cached file as input.
+			if (!fileStr.isEmpty()) {
+				existing.file = fileStr;
+			}
+		}
+		existing.time = System.currentTimeMillis();
+		list.add(0, existing);
+		while (list.size() > MAX_HISTORY) {
+			list.remove(list.size() - 1);
+		}
+	}
+
+	public void clearSkinHistory() {
+		if (skinHistory != null) {
+			skinHistory.clear();
+		}
+		save();
+	}
+
+	public void clearCapeHistory() {
+		if (capeHistory != null) {
+			capeHistory.clear();
+		}
+		save();
+	}
 
 	public static SkintrimConfig getInstance() {
 		if (INSTANCE == null) {
